@@ -36,4 +36,13 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 void setupKeymap();
 extern std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix;
 
+#define VM_SAVE MC(KC_W)
+#define VM_QUIT MC(KC_Q)
+
+#define USER_MACRO_FUNCTION 0
+void process_user_macros(uint16_t macroid);
+
+extern void addStringToQueue(const char* str);
+extern void addKeycodeToQueue(const uint16_t keycode);
+
 #endif /* KEYMAP_H */

@@ -1,7 +1,5 @@
 #include "keymap.h"
 
-#if KEYBOARD_SIDE == LEFT
-
 // COLEMAK Mod-DH
 std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix = {KEYMAP(
 //+---------|---------|---------|---------|---------|---------+
@@ -37,7 +35,7 @@ void setupKeymap() {
 //+---------|---------|---------|---------|---------|---------+
     KC_GRV,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
 //|---------|---------|---------|---------|---------|---------|
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
+    XXXXXXX,  VM_QUIT,  VM_SAVE,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
 //|---------|---------|---------|---------|---------|---------|
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
 //|---------|---------|---------|---------|---------|---------|---------+
@@ -90,4 +88,15 @@ void setupKeymap() {
     }
 }
 
-#endif  // left
+void process_user_macros(uint16_t macroid)
+{
+    switch((macroid))
+    {
+        case VM_QUIT:
+            addStringToQueue(":q");
+            break;
+        case VM_SAVE:
+            addStringToQueue(":w");
+            break;
+    }
+}
